@@ -17,7 +17,6 @@ public class Main {
 
         int mode = Integer.parseInt(args[0]);
 
-//        System.out.println("Testing args: " + mode);
         if (mode == Functions.SERVER_MODE) {
             System.out.println("Inicializando Servidor JMS");
             //Subiendo la versión embedded de ActiveMQ.
@@ -33,7 +32,6 @@ public class Main {
         } else if (mode == Functions.CLIENT_MODE) {
             System.out.println("Inicializando Productor");
             long idDispo = Long.parseLong(args[1]);
-//            System.out.println("Testing args: " + idDispo);
 
             for (int i = 0; i < 5; i++) {
                 if(args.length > 2) {
