@@ -17,7 +17,7 @@ public class Functions {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode jsonNodes = objectMapper.createObjectNode();
 
-        jsonNodes.put("fechaGeneracion", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(message.getFechaGeneracion()));
+        jsonNodes.put("fechaGeneracion", message.getFechaGeneracion().toString());
         jsonNodes.put("idDispositivo", message.getIdDispositivo());
         jsonNodes.put("temperatura", message.getTemperatura());
         jsonNodes.put("humedad", message.getHumedad());

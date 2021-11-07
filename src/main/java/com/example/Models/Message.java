@@ -1,12 +1,13 @@
 package com.example.Models;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Message {
 
 
-    private Date fechaGeneracion;
+    private LocalDateTime fechaGeneracion;
 
     private long idDispositivo;
 
@@ -17,18 +18,18 @@ public class Message {
     public Message() {
     }
 
-    public Message(Date fechaGeneracion, long idDispositivo, float temperatura, float humedad) {
+    public Message(LocalDateTime fechaGeneracion, long idDispositivo, float temperatura, float humedad) {
         this.fechaGeneracion = fechaGeneracion;
         this.idDispositivo = idDispositivo;
         this.temperatura = temperatura;
         this.humedad = humedad;
     }
 
-    public Date getFechaGeneracion() {
+    public LocalDateTime getFechaGeneracion() {
         return fechaGeneracion;
     }
 
-    public void setFechaGeneracion(Date fechaGeneracion) {
+    public void setFechaGeneracion(LocalDateTime fechaGeneracion) {
         this.fechaGeneracion = fechaGeneracion;
     }
 

@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id "com.github.johnrengelman.shadow" version "6.1.0"
+    id "com.github.johnrengelman.shadow" version "5.2.0"
 }
 
 group 'org.example'
@@ -30,7 +30,7 @@ test {
 }
 
 shadowJar {
-    baseName = 'jmsProducer'
-    classifier = null
-    version = 1.0
+    archiveBaseName.set('jmsproducer')
+    archiveClassifier.set('')
+    archiveVersion.set('1.0')
 }

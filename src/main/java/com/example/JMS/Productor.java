@@ -5,6 +5,7 @@ import com.example.Models.Message;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Productor {
@@ -13,8 +14,15 @@ public class Productor {
 
     }
 
-    public void enviarMensaje(long idDispositivo, String topicName) throws JMSException {
-        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+    public void enviarMensaje(long idDispositivo, String topicName, boolean prod) throws JMSException {
+        ActiveMQConnectionFactory factory;
+
+        if(prod){
+            factory = new ActiveMQConnectionFactory("tcp://server:61616");
+        }else {
+            factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        }
+        System.out.println(prod);
         Connection connection = factory.createConnection("admin", "admin");
         connection.start();
         // Creando una sesión no transaccional y automatica.
@@ -26,7 +34,7 @@ public class Productor {
         Topic topic = session.createTopic(topicName);
         MessageProducer producer = session.createProducer(topic);
 
-        Message message = new Message(new Date(), idDispositivo, Functions.randomFloatGenerator(), Functions.randomFloatGenerator());
+        Message message = new Message(LocalDateTime.now(), idDispositivo, Functions.randomFloatGenerator(), Functions.randomFloatGenerator());
 
         // Creando un mensaje de texto y enviando.
         TextMessage msgToSend = session.createTextMessage(Functions.toJSON(message));
