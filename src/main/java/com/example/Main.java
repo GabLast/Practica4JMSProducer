@@ -8,19 +8,18 @@ import javax.jms.JMSException;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws JMSException {
 
         if (args.length == 0) {
             mensajesParametros();
             return;
         }
 
-        long idDispo;
-        int mode;
+        long idDispo = Long.parseLong(args[1]);
+        int mode = Integer.parseInt(args[0]);
 
         if (args.length > 0) {
-
-            mode = Integer.parseInt(args[0]);
+            System.out.println("Testing args: " + mode);
             if (mode == Functions.SERVER_MODE) {
                 System.out.println("Inicializando Servidor JMS");
                 //Subiendo la versión embedded de ActiveMQ.
@@ -35,7 +34,7 @@ public class Main {
                 }
             } else if (mode == Functions.CLIENT_MODE) {
                 System.out.println("Inicializando Productor");
-                idDispo = Long.parseLong(args[1]);
+                System.out.println("Testing args: " + idDispo);
 
                 for (int i = 0; i < 5; i++) {
                     new Productor().enviarMensaje(idDispo, "notificacion_sensores");
