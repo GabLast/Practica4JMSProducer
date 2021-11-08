@@ -4,7 +4,7 @@ package com.example.Models;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Message {
+public class Sensor {
 
 
     private LocalDateTime fechaGeneracion;
@@ -15,10 +15,10 @@ public class Message {
 
     private float humedad;
 
-    public Message() {
+    public Sensor() {
     }
 
-    public Message(LocalDateTime fechaGeneracion, long idDispositivo, float temperatura, float humedad) {
+    public Sensor(LocalDateTime fechaGeneracion, long idDispositivo, float temperatura, float humedad) {
         this.fechaGeneracion = fechaGeneracion;
         this.idDispositivo = idDispositivo;
         this.temperatura = temperatura;

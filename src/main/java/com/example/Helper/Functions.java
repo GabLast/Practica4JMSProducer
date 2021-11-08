@@ -1,11 +1,10 @@
 package com.example.Helper;
 
-import com.example.Models.Message;
+import com.example.Models.Sensor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public class Functions {
@@ -13,14 +12,14 @@ public class Functions {
     public static final int SERVER_MODE = 1;
     public static final int CLIENT_MODE = 2;
 
-    public static String toJSON(Message message){
+    public static String toJSON(Sensor sensor){
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode jsonNodes = objectMapper.createObjectNode();
 
-        jsonNodes.put("fechaGeneracion", message.getFechaGeneracion().toString());
-        jsonNodes.put("idDispositivo", message.getIdDispositivo());
-        jsonNodes.put("temperatura", message.getTemperatura());
-        jsonNodes.put("humedad", message.getHumedad());
+        jsonNodes.put("fechaGeneracion", sensor.getFechaGeneracion().toString());
+        jsonNodes.put("idDispositivo", sensor.getIdDispositivo());
+        jsonNodes.put("temperatura", sensor.getTemperatura());
+        jsonNodes.put("humedad", sensor.getHumedad());
 
         String json = null;
 

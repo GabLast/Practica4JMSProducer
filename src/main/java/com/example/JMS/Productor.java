@@ -1,12 +1,11 @@
 package com.example.JMS;
 
 import com.example.Helper.Functions;
-import com.example.Models.Message;
+import com.example.Models.Sensor;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Productor {
 
@@ -22,7 +21,7 @@ public class Productor {
         }else {
             factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         }
-        System.out.println(prod);
+//        System.out.println(prod);
         Connection connection = factory.createConnection("admin", "admin");
         connection.start();
         // Creando una sesión no transaccional y automatica.
@@ -34,10 +33,10 @@ public class Productor {
         Topic topic = session.createTopic(topicName);
         MessageProducer producer = session.createProducer(topic);
 
-        Message message = new Message(LocalDateTime.now(), idDispositivo, Functions.randomFloatGenerator(), Functions.randomFloatGenerator());
+        Sensor sensor = new Sensor(LocalDateTime.now(), idDispositivo, Functions.randomFloatGenerator(), Functions.randomFloatGenerator());
 
         // Creando un mensaje de texto y enviando.
-        TextMessage msgToSend = session.createTextMessage(Functions.toJSON(message));
+        TextMessage msgToSend = session.createTextMessage(Functions.toJSON(sensor));
         producer.send(msgToSend);
 
         //Desconectando la referencia.
