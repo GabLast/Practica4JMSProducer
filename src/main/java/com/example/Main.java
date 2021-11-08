@@ -33,7 +33,16 @@ public class Main {
             System.out.println("Inicializando Productor");
             long idDispo = Long.parseLong(args[1]);
 
-            for (int i = 0; i < 5; i++) {
+            if (args.length > 2) {
+                System.out.println("Production Profile: " + true);
+            } else {
+                System.out.println("Production Profile: " + false);
+            }
+
+            //delay porque el docker-compose no espera a que
+            //la app web se conecte al servidor ActiveMQ
+            Functions.delay(11);
+            for (int i = 0; i < 10; i++) {
                 if(args.length > 2) {
                     new Productor().enviarMensaje(idDispo, "notificacion_sensores", true);
                 }else {

@@ -21,7 +21,7 @@ public class Productor {
         }else {
             factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         }
-        System.out.println("Production Profile: " + prod);
+
         Connection connection = factory.createConnection("admin", "admin");
         connection.start();
         // Creando una sesión no transaccional y automatica.

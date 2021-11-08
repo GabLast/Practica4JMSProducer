@@ -4,4 +4,4 @@ VOLUME /tmpJMS
 ENV MODE=99 ID=99
 EXPOSE 61616
 COPY /build/libs/*.jar mi_app.jar
-ENTRYPOINT  ["java","-jar", "mi_app.jar", "$MODE", "$ID", "3"]
+ENTRYPOINT java -jar mi_app.jar $MODE $ID 3
