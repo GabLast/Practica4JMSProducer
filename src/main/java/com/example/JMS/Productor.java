@@ -17,7 +17,7 @@ public class Productor {
         ActiveMQConnectionFactory factory;
 
         if(prod){
-            factory = new ActiveMQConnectionFactory("tcp://server:61616");
+            factory = new ActiveMQConnectionFactory("tcp://servidor-jms:61616");
         }else {
             factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         }
